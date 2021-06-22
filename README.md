@@ -7,9 +7,9 @@ _Feature 2: Show/hide an event's details_
 
 
 
-*   **Given: **user hasn’t opened element
-*   **When: **user opens app
-*   **Then: **event element is collapsed
+*   **Given:** user hasn’t opened element
+*   **When:** user opens app
+*   **Then:** event element is collapsed
 
 **Scenario 2:** User can expand an event to see its details
 
@@ -18,9 +18,9 @@ _Feature 2: Show/hide an event's details_
 
 
 
-*   **Given: **user has not expanded element
-*   **When: **user clicks “Show”
-*   **Then: **event element expands
+*   **Given:** user has not expanded element
+*   **When:** user clicks “Show”
+*   **Then:** event element expands
 
 **Scenario 3:** User can collapse an event to hide its details
 
@@ -29,9 +29,9 @@ _Feature 2: Show/hide an event's details_
 
 
 
-*   **Given: **user has expanded event element
-*   **When: **user clicks “Hide”
-*   **Then: **event element collapses
+*   **Given:** user has expanded event element
+*   **When:** user clicks “Hide”
+*   **Then:** event element collapses
 
 _Feature 3: Specify number of events_
 
@@ -42,9 +42,9 @@ _Feature 3: Specify number of events_
 
 
 
-*   **Given: **user has not specified a number
-*   **When: **user opens app
-*   **Then: **the default number of events is 32
+*   **Given:** user has not specified a number
+*   **When:** user opens app
+*   **Then:** the default number of events is 32
 
 **Scenario 2:** User can change the number of events they want to see
 
@@ -53,9 +53,9 @@ _Feature 3: Specify number of events_
 
 
 
-*   **Given: **user is on the event list
-*   **When: **user sets a new number of events 
-*   **Then: **the number of possible displayed events matches the user defined number
+*   **Given:** user is on the event list
+*   **When:** user sets a new number of events 
+*   **Then:** the number of possible displayed events matches the user defined number
 
 _Feature 4: Use the app when offline_
 
@@ -66,9 +66,9 @@ _Feature 4: Use the app when offline_
 
 
 
-*   **Given: **user has used app before
-*   **When: **user opens app with no internet connection
-*   **Then: **app displays cached data
+*   **Given:** user has used app before
+*   **When:** user opens app with no internet connection
+*   **Then:** app displays cached data
 
 **Scenario 2:** Show error when user changes the settings (city, time range)
 
@@ -77,9 +77,9 @@ _Feature 4: Use the app when offline_
 
 
 
-*   **Given: **app is in use offline
-*   **When: **user changes app settings 
-*   **Then: **app shows an error 
+*   **Given:** app is in use offline
+*   **When:** user changes app settings 
+*   **Then:** app shows an error 
 
     _Feature 5: Data visualization_
 
@@ -91,6 +91,6 @@ _Feature 4: Use the app when offline_
 
 
 
-*   **Given: **user is logged in
-*   **When: **event list is displayed
-*   **Then: **a chart with upcoming events is displayed
+*   **Given:** user is logged in
+*   **When:** event list is displayed
+*   **Then:** a chart with upcoming events is displayed
