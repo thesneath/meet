@@ -37,13 +37,16 @@
       </label>
       <button id="getToken">Get Token</button>
       <p id="accessToken"></p>
+      <h4>Step 3: Get the calendar events using your access token</h4>
+      <button id="getEvents">Get Events</button>
+      <p id="events"></p>
     </main>
     <script type="text/javascript">
       const getCodeElement = document.getElementById("getCode");
       const resultElement = document.getElementById("result");
       const resultLink = document.getElementById("authURL");
       const getAuthURL =
-        "https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
+        "https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
       getCodeElement.onclick = function () {
         fetch(getAuthURL)
@@ -63,7 +66,9 @@
       const codeValue = document.getElementById("code");
       const getAccessToken = document.getElementById("getToken");
       const accessTokenElement = document.getElementById("accessToken");
-      const getToken = "https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}";
+      const getToken =
+        "https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/token";
+
       getAccessToken.onclick = function () {
         let code = codeValue.value;
 
@@ -71,7 +76,7 @@
         if (decodeURIComponent(code) === code) {
           code = encodeURIComponent(codeValue.value);
         }
-        const getTokenRequest = getToken +  "/" + code;
+        const getTokenRequest = getToken + "/" + code;
         fetch(getTokenRequest)
           .then(function (response) {
             return response.json();
@@ -80,10 +85,30 @@
             accessTokenElement.innerText = JSON.stringify(json);
           });
       };
+
+      const getEvents = document.getElementById("getEvents");
+      const events = document.getElementById("events");
+      const getCalendarEvents = "https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
+
+      getEvents.onclick = function () {
+        const { access_token } = JSON.parse(accessTokenElement.innerText);
+        const eventRequest = getCalendarEvents + "/" + access_token;
+        fetch(eventRequest)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (json) {
+            events.innerText = JSON.stringify(json, null, 2);
+          });
+      };
     </script>
   </body>
 </html>
 
-<!-- "https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
-  https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}
+<!-- ENDPOINTS
+  https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url;
+
+  https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}
+
+  https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/{access_token}
  -->
