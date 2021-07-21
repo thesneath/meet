@@ -24,7 +24,7 @@ describe('<Event /> component', () => {
   })
 
   test('renders a show details button', () => {
-    expect(EventWrapper.find('.button-details')).toHaveLength(1);
+    expect(EventWrapper.find('.event button')).toHaveLength(1);
   })
 
   test('details button changes state of hidden from true to false', () => {
@@ -42,7 +42,7 @@ describe('<Event /> component', () => {
   test('clicking show details actually shows details', () => {
     EventWrapper.setState({ hidden: true })
     EventWrapper.find('.event button').simulate('click');
-    expect(EventWrapper.find('.show-details')).toHaveLength(1);
+    expect(EventWrapper.find('.details')).toHaveLength(1);
   })
 
   test('nothing displayed if hidden state is true', () => {

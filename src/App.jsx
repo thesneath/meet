@@ -1,15 +1,29 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./nprogress.css"
 import EventList from "./EventList/EventList";
 import CitySearch from "./CitySearch/CitySearch";
 import NumberOfEvents from "./NumberOfEvents/NumberOfEvents";
-import { getEvents } from "./api";
+import { getEvents, extractLocations } from "./api";
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
   };
+
+  componentDidMount() {
+    this.mounted = true;
+    getEvents().then((events) => {
+      if (this.mounted) {
+      this.setState({ events, locations: extractLocations(events) });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   updateEvents = (location) => {
     getEvents().then((events) => {
