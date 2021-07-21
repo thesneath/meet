@@ -1,8 +1,5 @@
 // ENDPOINTS
 
-// getAuthURL https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url
-// getAccessToken https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/token/
-
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
