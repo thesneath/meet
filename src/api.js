@@ -27,7 +27,7 @@ export const getEvents = async () => {
   const token = await getAccessToken();
   if (token) {
     removeQuery();
-    const url = `https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/token/${token}`;
+    const url = `https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/token/${token}`;
     const result = await axios.get(url);
     if (result.data) {
       const locations = extractLocations(result.data.events);
@@ -42,7 +42,7 @@ export const getEvents = async () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    `https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
+    `https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/token/${encodeCode}`
   )
   .then(res => {
     return res.json();
@@ -69,7 +69,7 @@ export const getAccessToken = async () => {
     const code = searchParams.get('code');
     if (!code) {
       const results = await axios.get(
-        'https://fqtstwth60.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
+        'https://xm56odf8a0.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
