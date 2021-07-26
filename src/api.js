@@ -16,7 +16,7 @@ const removeQuery = () => {
     const newUrl = window.location.protocol + '//' + window.location.host;
     window.history.pushState('', '' , newUrl);
   }
-}
+};
 
 export const getEvents = async () => {
   NProgress.start();
@@ -37,7 +37,7 @@ export const getEvents = async () => {
       return result.data.events
     }
   }
-}
+};
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -50,14 +50,14 @@ const getToken = async (code) => {
   .catch(error => error);
   access_token && localStorage.setItem("access_token", access_token);
   return access_token;
-}
+};
 
 const checkToken = async (accessToken) => {
   const result = await fetch(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`)
     .then(res => res.json())
     .catch(err => err.json());
   return result;
-}
+};
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
@@ -77,4 +77,4 @@ export const getAccessToken = async () => {
     return code && getToken(code);
   }
   return accessToken;
-}
+};

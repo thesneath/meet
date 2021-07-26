@@ -12,14 +12,15 @@ class Event extends Component {
   };
 
   render() {
+    const { event } = this.props;
     return (
       <div className="event">
-        <h2>{this.props.event.summary}</h2>
-        <p className="details">{this.props.event.location}</p>
+        <h2>{event.summary}</h2>
+        <p className="details">{event.location}</p>
         {this.state.hidden ? (
           <div></div>
         ) : (
-          <p className="show-details">{this.props.event.description}</p>
+          <p className="show-details">{event.description}</p>
         )}
         {this.state.hidden ? (
           <button className="details-btn" onClick={() => this.handleShow()}>
