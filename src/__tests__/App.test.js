@@ -81,16 +81,16 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('List of events displays the correct amount of events when input changes in NumberOfEvents', async () => {
-    const AppWrapper = mount(<App />);
-    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    AppWrapper.setState({ numberOfEvents: 32 });
-    const allEvents = await getEvents();
-    const eventsToShow = allEvents.slice(0, 1)
-    const eventObject = { target: { value: 1 }}
-    NumberOfEventsWrapper.find('.number').simulate('change', eventObject);
-    expect(AppWrapper.state('numberOfEvents')).toBe(1);
-    expect(AppWrapper.state('events')).toEqual(eventsToShow);
-    AppWrapper.unmount();
-  })
+  // test('List of events displays the correct amount of events when input changes in NumberOfEvents', async () => {
+  //   const AppWrapper = mount(<App />);
+  //   const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+  //   AppWrapper.setState({ numberOfEvents: 32 });
+  //   const allEvents = await getEvents();
+  //   const eventsToShow = allEvents.slice(0, 1)
+  //   const eventObject = { target: { value: 1 }}
+  //   NumberOfEventsWrapper.find('.number').simulate('change', eventObject);
+  //   expect(AppWrapper.state('numberOfEvents')).toBe(1);
+  //   expect(AppWrapper.state('events')).toEqual(eventsToShow);
+  //   AppWrapper.unmount();
+  // })
 });
