@@ -20,7 +20,7 @@ class Event extends Component {
         {this.state.hidden ? (
           <div></div>
         ) : (
-          <p className="show-details">{event.description}</p>
+          <p className="event__Details">{event.description}</p>
         )}
         {this.state.hidden ? (
           <button className="details-btn" onClick={() => this.handleShow()}>
