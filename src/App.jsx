@@ -18,11 +18,6 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
-    if (!navigator.onLine) {
-      this.setState({
-        infoText: 'You are not connected to the internet. Some events may not be up to date.'
-      })
-    }
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ 
@@ -30,6 +25,10 @@ class App extends Component {
           locations: extractLocations(events),
           infoText: ''
          });
+      } else if (!navigator.onLine) {
+        this.setState({
+          infoText: 'You are not connected to the internet. Some events may not be up to date.'
+        });
       }
     });
   }
