@@ -12,7 +12,7 @@ class NumberOfEvents extends Component {
       this.setState({
         errorText: 'Invalid entry. Please choose a number of events to display.'
       })
-    } else{
+    } else {
     this.setState({ errorText: '' })
     };
   };

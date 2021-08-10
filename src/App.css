@@ -115,6 +115,11 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
+.EventList {
+  width: 70%;
+  margin: 0 auto;
+}
+
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -247,5 +252,17 @@ input[type="number"] {
     max-width: 50%;
     min-width: auto;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .EventList {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .EventList {
+    width: 100%;
   }
 }
