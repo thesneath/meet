@@ -13,7 +13,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 20,
     currentLocation: '',
-    infoText: ''
+    infoText: navigator.onLine ? '' : 'You are not connected to the internet. Some events may not be up to date.'
   };
 
   componentDidMount() {
@@ -23,13 +23,8 @@ class App extends Component {
         this.setState({ 
           events: events, 
           locations: extractLocations(events),
-          infoText: ''
          });
-      } else if (!navigator.onLine) {
-        this.setState({
-          infoText: 'You are not connected to the internet. Some events may not be up to date.'
-        });
-      }
+      } 
     });
   }
 
@@ -44,7 +39,6 @@ class App extends Component {
         this.setState({
         events: locationEvents,
         currentLocation: location,
-        infoText: ''
       });
     }});
   };
