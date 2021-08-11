@@ -4,7 +4,7 @@ import "./nprogress.css";
 import EventList from "./EventList/EventList";
 import CitySearch from "./CitySearch/CitySearch";
 import NumberOfEvents from "./NumberOfEvents/NumberOfEvents";
-import WelcomeScreen from "./WelcomeScreen";
+import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
 import { OfflineAlert } from "./Alert";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
 
@@ -20,9 +20,9 @@ class App extends Component {
     showWelcomeScreen: undefined,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
