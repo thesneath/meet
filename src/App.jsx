@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './normalize.css';
+import "./normalize.css";
 import "./App.css";
 import "./nprogress.css";
 import EventList from "./EventList/EventList";
@@ -8,6 +8,7 @@ import NumberOfEvents from "./NumberOfEvents/NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
 import { OfflineAlert } from "./Alert";
 import { getEvents, extractLocations, checkToken, getAccessToken } from "./api";
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 class App extends Component {
   state = {
@@ -23,7 +24,7 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem("access_token");
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
@@ -62,6 +63,17 @@ class App extends Component {
     });
   };
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location)
+        .length;
+      const city = location.split(", ").shift();
+      return { city, number };
+    });
+    return data;
+  };
+
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -82,6 +94,17 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateNumberOfEvents={this.updateNumberOfEvents}
         />
+        <ScatterChart
+          width={730}
+          height={250}
+          margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="city" name="city" type="category" />
+          <YAxis dataKey="number" name="number of events" type="number" />
+          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         <OfflineAlert text={this.state.infoText} />
         <EventList events={this.state.events} />
         <WelcomeScreen
