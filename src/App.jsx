@@ -94,13 +94,13 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateNumberOfEvents={this.updateNumberOfEvents}
         />
-        <ResponsiveContainer>
+        <ResponsiveContainer height={400} >
         <ScatterChart
           margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="city" name="city" type="category" />
-          <YAxis dataKey="number" name="number of events" type="number" />
+          <YAxis allowDecimals={false} dataKey="number" name="number of events" type="number" />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
