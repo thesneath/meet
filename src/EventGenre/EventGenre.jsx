@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
 
 const EventGenre = ({ events }) => {
-  
   const [data, setData] = useState([]);
 
-  const getData = (events) => {
+  const getData = () => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
     const data = genres.map((genre) => {
       const value = events.filter(event => event.summary.split(' ').includes(genre)).length
